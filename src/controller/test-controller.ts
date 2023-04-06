@@ -6,8 +6,8 @@ export class TestController {
 
   test(req: Request, res: Response): Response {
     if(this.service.test()) {
-      console.log("Application running!");
-      return res.send("Application running!");  
+      console.log('Application running!');
+      return res.send('Application running!');  
     }
   }
 }

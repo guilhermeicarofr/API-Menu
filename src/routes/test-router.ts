@@ -4,7 +4,7 @@ import { Router } from 'express';
 const testRouter = Router();
 const testController = new TestController();
 
-testRouter.get("/test", (req, res) => {
+testRouter.get('/test', (req, res) => {
   testController.test(req, res);
 });
 
