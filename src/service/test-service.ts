@@ -1,5 +1,5 @@
 export class TestService {
   test() {
-    return true;
+    console.log('Application running!');
   }
 }

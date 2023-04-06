@@ -4,7 +4,11 @@ import { Schema } from 'joi';
 import { ValidationSchemas } from 'schemas/validation-schemas';
 
 export class ValidationMiddleware {
-  schemas = new ValidationSchemas();
+  schemas;
+
+  constructor () {
+    this.schemas = new ValidationSchemas(); 
+  }
 
   validateSchema(schema: Schema, type: 'body' | 'param') {
     return (req: Request, res: Response, next: NextFunction) => {

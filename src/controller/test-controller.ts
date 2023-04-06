@@ -1,13 +1,18 @@
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
 import { TestService } from 'service/test-service';
 
 export class TestController {
-  service = new TestService();
+  private service;
 
-  test(req: Request, res: Response): Response {
-    if(this.service.test()) {
-      console.log('Application running!');
-      return res.send('Application running!');  
+  constructor() {
+    this.service = new TestService();
+  }
+
+  test() {
+    return (req: Request, res: Response) => {
+      this.service.test();
+      return res.status(httpStatus.OK).send('Application running!');    
     }
   }
 }
