@@ -2,9 +2,10 @@ import { Database } from 'database/database';
 import { IAdmin } from 'model/IAdmin';
 
 export class AdminRepository {
-  private db = new Database();
+  private db;
 
   constructor() {
+    this.db = new Database();
     this.db.connect();
   }
 
