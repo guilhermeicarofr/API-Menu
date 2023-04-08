@@ -27,4 +27,8 @@ export class ProductRepository {
     }
     return product;
   }
+
+  async delete(id: string) {
+    await this.db.Product.findByIdAndDelete({ _id: id })
+  }
 }

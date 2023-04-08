@@ -20,4 +20,10 @@ export class ProductService {
     if(!product) throw this.errors.notFound();
     return product;
   }
+
+  async deleteProduct(id: string) {
+    const product = await this.repository.findById(id);
+    if(!product) throw this.errors.notFound();
+    await this.repository.delete(id);
+  }
 }

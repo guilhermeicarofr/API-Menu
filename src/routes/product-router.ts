@@ -12,6 +12,7 @@ productRouter
   .get('/product', productController.getProducts())
 
   .use('/product/:id', validationMiddleware.validateSchema(validationMiddleware.schemas.idParam, 'params'))  
-  .get('/product/:id', productController.getOneProduct());
+  .get('/product/:id', productController.getOneProduct())
+  .delete('/product/:id', productController.deleteOneProduct());
 
 export { productRouter };

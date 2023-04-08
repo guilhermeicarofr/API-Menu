@@ -33,4 +33,18 @@ export class ProductController {
       }
     };
   }
+
+  deleteOneProduct() {
+    return async (req: Request, res: Response) => {
+      const { id } = req.params;
+
+      try {
+        await this.service.deleteProduct(id);
+        return res.sendStatus(httpStatus.OK);
+      } catch (error) {
+        if(error.name === 'NotFound') return res.status(httpStatus.NOT_FOUND).send(error.message);
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+      }
+    };
+  }
 }
