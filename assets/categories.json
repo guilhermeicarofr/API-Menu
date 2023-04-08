@@ -1,0 +1,60 @@
+{
+  "primary": [
+    {
+      "name": "saudaveis",
+      "parent": null
+    },
+    {
+      "name": "lanches",
+      "parent": null
+    },
+    {
+      "name": "refeicoes",
+      "parent": null
+    },
+    {
+      "name": "doces",
+      "parent": null
+    }
+  ],
+  "saudaveis": [
+    {
+      "name": "saladas",
+      "parent": "saudaveis"
+    },
+    {
+      "name": "sucos",
+      "parent": "saudaveis"
+    }
+  ],
+  "lanches": [
+    {
+      "name": "hamburguers",
+      "parent": "lanches"
+    },
+    {
+      "name": "salgados",
+      "parent": "lanches"
+    }
+  ],
+  "refeicoes": [
+    {
+      "name": "marmitex",
+      "parent": "refeicoes"
+    },
+    {
+      "name": "massas",
+      "parent": "refeicoes"
+    }
+  ],
+  "doces": [
+    {
+      "name": "bolos",
+      "parent": "doces"
+    },
+    {
+      "name": "chocolates",
+      "parent": "doces"
+    }
+  ]
+}
