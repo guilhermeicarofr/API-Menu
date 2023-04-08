@@ -9,6 +9,9 @@ const validationMiddleware = new ValidationMiddleware();
 
 productRouter
   .use('/product', validationMiddleware.validateAuthToken())
-  .get('/product', productController.getProducts());
+  .get('/product', productController.getProducts())
+
+  .use('/product/:id', validationMiddleware.validateSchema(validationMiddleware.schemas.idParam, 'params'))  
+  .get('/product/:id', productController.getOneProduct());
 
 export { productRouter };

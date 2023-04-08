@@ -5,4 +5,8 @@ export class ValidationSchemas {
     username: Joi.string().required(),
     password: Joi.string().required()
   });
+
+  idParam = Joi.object({
+    id: Joi.string().required()
+  });
 }

@@ -19,4 +19,11 @@ export class Errors {
       message: 'Invalid login credentials'
     }
   }
+
+  notFound() {
+    return {
+      name: 'NotFound',
+      message: 'Entity not found'
+    }
+  }
 }
