@@ -24,8 +24,11 @@ export class EncryptionService {
     return { token };
   }
 
-  verifyToken(token: string) {
-    const verified = jwt.verify(token, this.SECRET) as IAdmin;
+  verifyToken(token: string): null | IAdmin {
+    let verified = null;
+    jwt.verify(token, this.SECRET, (error, decoded) => {
+      if(!error) verified = decoded as IAdmin;
+    })
     return verified;
   }
 }
