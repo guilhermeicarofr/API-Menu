@@ -28,7 +28,16 @@ export class ValidationMiddleware {
 
   validateAuthToken() {
     return async (req: Request, res: Response, next: NextFunction) => {
-      const token = req.header('Authentication');
+      const auth1 = req.header('Authorization');
+      const auth2 = req.header('Authentication');
+
+      let token = null;
+      if(auth1) {
+        token = auth1.split(' ')[1];
+      } else if(auth2) {
+        token = auth2;
+      }
+
       if (!token) return res.sendStatus(httpStatus.UNAUTHORIZED);
 
       const verified = this.encryption.verifyToken(token);
