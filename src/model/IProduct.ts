@@ -1,7 +1,15 @@
-import { ICategory } from './ICategory';
+import { Category } from './ICategory';
 
 export interface IProduct {
-  categories: ICategory[];
+  categories: Category[];
+  name: string;
+  qty: number;
+  price: number;
+}
+
+export interface Product {
+  _id: string;
+  categories: Category[];
   name: string;
   qty: number;
   price: number;
