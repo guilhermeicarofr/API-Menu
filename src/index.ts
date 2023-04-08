@@ -3,6 +3,7 @@ import cors from 'cors';
 import { testRouter } from 'routes/test-router';
 import { authRouter } from 'routes/auth-router';
 import { categoryRouter } from 'routes/category-router';
+import { productRouter } from 'routes/product-router';
 
 const PORT = 5000;
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(testRouter);
 app.use(authRouter);
 app.use(categoryRouter);
+app.use(productRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}...`)
