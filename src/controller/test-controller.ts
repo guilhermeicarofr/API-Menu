@@ -13,6 +13,6 @@ export class TestController {
     return (req: Request, res: Response) => {
       this.service.test();
       return res.status(httpStatus.OK).send('Application running!');    
-    }
+    };
   }
 }

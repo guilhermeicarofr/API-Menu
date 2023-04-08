@@ -5,7 +5,7 @@ export class AdminRepository {
   private db;
 
   constructor() {
-    this.db = new Database();
+    this.db = Database.getInstance();
     this.db.connect();
   }
 

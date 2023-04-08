@@ -21,7 +21,7 @@ export class AuthController {
         if(error.name === 'InvalidSignUp') return res.status(httpStatus.CONFLICT).send(error.message);
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
       }
-    }
+    };
   }
 
   postLogin() {
@@ -36,6 +36,6 @@ export class AuthController {
         if(error.name === 'InvalidLogin') return res.status(httpStatus.FORBIDDEN).send(error.message);
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
       }
-    }
+    };
   }
 }
