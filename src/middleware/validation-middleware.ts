@@ -37,11 +37,10 @@ export class ValidationMiddleware {
       } else if(auth2) {
         token = auth2;
       }
-
       if (!token) return res.sendStatus(httpStatus.UNAUTHORIZED);
 
       const verified = this.encryption.verifyToken(token);
-      if(!verified.username) return res.sendStatus(httpStatus.UNAUTHORIZED);
+      if(!verified) return res.sendStatus(httpStatus.UNAUTHORIZED);
 
       const checkUsername = await this.auth.checkUsernameInUse(verified.username);
       if(!checkUsername) return res.sendStatus(httpStatus.UNAUTHORIZED);
