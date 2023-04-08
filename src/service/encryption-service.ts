@@ -23,4 +23,9 @@ export class EncryptionService {
     const token = jwt.sign(userInfo, this.SECRET);
     return { token };
   }
+
+  verifyToken(token: string) {
+    const verified = jwt.verify(token, this.SECRET) as IAdmin;
+    return verified;
+  }
 }

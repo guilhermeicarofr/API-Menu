@@ -13,7 +13,7 @@ export class AuthService {
     this.encryption = new EncryptionService();
   }
 
-  private async checkUsernameInUse(username: string) {
+  async checkUsernameInUse(username: string) {
     const admin = await this.repository.findByUsername(username);
     return ((admin)? true : false);
   }
