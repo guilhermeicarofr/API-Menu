@@ -5,6 +5,12 @@ import mongoose from 'mongoose';
 
 export class Database {
   private DATABASE_URL: string = 'mongodb://127.0.0.1:27017/menu';
+  private static INSTANCE: Database;
+
+  static getInstance() {
+    if(!this.INSTANCE) this.INSTANCE = new Database();
+    return this.INSTANCE;
+  }
 
   async connect() {
     await mongoose.connect(this.DATABASE_URL);
