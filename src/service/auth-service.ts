@@ -25,4 +25,14 @@ export class AuthService {
   
     await this.repository.create({ username, password: passwordHash });
   }
+
+  async returnAdminAuthToken(username: string, password: string) {
+    if(!await this.checkUsernameInUse(username)) throw this.errors.userNotFound();
+
+    const admin = await this.repository.findByUsername(username);
+    if(!this.encryption.compareHash(password, admin.password)) throw this.errors.login();
+
+    const { token } = this.encryption.generateToken({ username, password });
+    return token;
+  }
 }

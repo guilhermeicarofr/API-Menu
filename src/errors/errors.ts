@@ -5,4 +5,18 @@ export class Errors {
       message: 'Username already in use'
     };
   }
+
+  userNotFound() {
+    return {
+      name: 'UserNotFound',
+      message: 'Username not found'
+    };
+  }
+
+  login() {
+    return {
+      name: 'InvalidLogin',
+      message: 'Invalid login credentials'
+    }
+  }
 }

@@ -9,7 +9,7 @@ export class AdminRepository {
     this.db.connect();
   }
 
-  async findByUsername(username: string) {
+  async findByUsername(username: string): Promise<IAdmin> {
     const user = await this.db.Admin.findOne({ username: username });
     return user;
   }
