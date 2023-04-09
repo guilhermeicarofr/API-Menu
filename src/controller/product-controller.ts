@@ -54,9 +54,25 @@ export class ProductController {
       const { name, categories, price, qty } = req.body as IProduct;
 
       try {
-        await this.service.createNewProduct({ name, categories, price, qty });
-        return res.sendStatus(httpStatus.CREATED);
+        const newProduct = await this.service.createNewProduct({ name, categories, price, qty });
+        return res.status(httpStatus.CREATED).send(newProduct);
       } catch (error) {
+        if(error.name === 'CategoryConflict') return res.status(httpStatus.CONFLICT).send(error.message);
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+      }
+    };
+  }
+
+  patchProduct() {
+    return async (req: Request, res: Response) => {
+      const { id } = req.params;
+      const productPatch = req.body as IProduct;
+
+      try {
+        const editedProduct = await this.service.editProduct(id, productPatch);
+        return res.status(httpStatus.OK).send(editedProduct);
+      } catch (error) {
+        if(error.name === 'NotFound') return res.status(httpStatus.NOT_FOUND).send(error.message);
         if(error.name === 'CategoryConflict') return res.status(httpStatus.CONFLICT).send(error.message);
         return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
       }

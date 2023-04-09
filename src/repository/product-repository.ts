@@ -31,4 +31,8 @@ export class ProductRepository {
   async delete(id: string) {
     await this.db.Product.findByIdAndDelete({ _id: id });
   }
+
+  async patch(id: string, newData: IProduct) {
+    await this.db.Product.findByIdAndUpdate({ _id: id }, newData);
+  }
 }

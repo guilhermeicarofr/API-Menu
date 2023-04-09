@@ -35,6 +35,25 @@ export class ProductService {
     const checkCategories = await this.categoryService.checkCategories(categories);
     if(!checkCategories) throw this.errors.categoryConflict();
 
-    await this.repository.create({ name, categories, price, qty });
+    const newProduct = await this.repository.create({ name, categories, price, qty });
+    return newProduct;
+  }
+
+  async editProduct(id: string, productPatch: IProduct) {
+    const { name, price, qty, categories } = await this.listOneProduct(id);
+
+    let newData = { name, price, qty, categories };
+    if(productPatch?.categories) {
+      await this.categoryService.checkCategories(productPatch.categories);
+      newData.categories = productPatch.categories;
+    }
+    if(productPatch.name) newData.name = productPatch.name;
+    if(productPatch.price) newData.price = productPatch.price;
+    if(productPatch.qty) newData.qty = productPatch.qty;
+
+    await this.repository.patch(id, newData);
+
+    const updatedProduct = await this.listOneProduct(id);
+    return updatedProduct;
   }
 }
