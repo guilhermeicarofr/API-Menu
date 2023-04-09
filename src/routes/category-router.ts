@@ -8,6 +8,6 @@ const validationMiddleware = new ValidationMiddleware();
 
 categoryRouter
   .use('/category', validationMiddleware.validateAuthToken())
-  .get('/category', categoryController.getCategories());
+    .get('/category', categoryController.getCategories());
 
 export { categoryRouter };

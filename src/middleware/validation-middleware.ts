@@ -16,7 +16,7 @@ export class ValidationMiddleware {
     this.auth = new AuthService();
   }
 
-  validateSchema(schema: Schema, type: 'body' | 'param') {
+  validateSchema(schema: Schema, type: 'body' | 'params') {
     return (req: Request, res: Response, next: NextFunction) => {
       const validation = schema.validate(req[type], { abortEarly: false });
       if(validation.error) {

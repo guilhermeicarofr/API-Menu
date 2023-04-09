@@ -17,6 +17,20 @@ export class Errors {
     return {
       name: 'InvalidLogin',
       message: 'Invalid login credentials'
-    }
+    };
+  }
+
+  notFound() {
+    return {
+      name: 'NotFound',
+      message: 'Entity not found'
+    };
+  }
+
+  categoryConflict() {
+    return {
+      name: 'CategoryConflict',
+      message: 'Invalid categories'
+    };
   }
 }
