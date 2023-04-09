@@ -23,12 +23,12 @@ export class ProductRepository {
   async findById(id: string) {
     let product = null;
     if(isValidObjectId(id)) {
-      product = await this.db.Product.findById({ _id: id })
+      product = await this.db.Product.findById({ _id: id });
     }
     return product;
   }
 
   async delete(id: string) {
-    await this.db.Product.findByIdAndDelete({ _id: id })
+    await this.db.Product.findByIdAndDelete({ _id: id });
   }
 }

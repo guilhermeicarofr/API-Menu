@@ -9,10 +9,10 @@ const validationMiddleware = new ValidationMiddleware();
 
 productRouter
   .use('/product', validationMiddleware.validateAuthToken())
-  .get('/product', productController.getProducts())
-
-  .use('/product/:id', validationMiddleware.validateSchema(validationMiddleware.schemas.idParam, 'params'))  
-  .get('/product/:id', productController.getOneProduct())
-  .delete('/product/:id', productController.deleteOneProduct());
+    .get('/product', productController.getProducts())
+    .post('/product', validationMiddleware.validateSchema(validationMiddleware.schemas.productBody, 'body'), productController.postProduct())
+    .use('/product/:id', validationMiddleware.validateSchema(validationMiddleware.schemas.idParam, 'params'))  
+      .get('/product/:id', productController.getOneProduct())
+      .delete('/product/:id', productController.deleteOneProduct());
 
 export { productRouter };

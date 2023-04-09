@@ -1,5 +1,6 @@
 import { Database } from 'database/database';
 import { ICategory } from 'model/ICategory';
+import { isValidObjectId } from 'mongoose';
 
 export class CategoryRepository {
   private db;
@@ -20,7 +21,10 @@ export class CategoryRepository {
   }
 
   async findById(id: string) {
-    const category = await this.db.Category.findById(id);
+    let category = null;
+    if(isValidObjectId(id)) {
+      category = await this.db.Category.findById({ _id: id });
+    }
     return category;
   }
 }

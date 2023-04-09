@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { ICategory } from 'model/ICategory';
 
+import { Category, ICategory } from 'model/ICategory';
 import { CategoryRepository } from 'repository/category-repository';
 
 export class CategoryService {
@@ -37,5 +37,13 @@ export class CategoryService {
       categories = await this.repository.findAll();
     }
     return categories;
+  }
+
+  async checkCategories(categories: Category[]) {
+    for(const category of categories) {
+      const categoryCheck = await this.repository.findById(category._id);
+      if(!categoryCheck) return false;
+    }
+    return true;
   }
 }
