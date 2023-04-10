@@ -1,5 +1,6 @@
-import { CategoryController } from 'controller/category-controller';
 import { Router } from 'express';
+
+import { CategoryController } from 'controller/category-controller';
 import { ValidationMiddleware } from 'middleware/validation-middleware';
 
 const categoryRouter = Router();

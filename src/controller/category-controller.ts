@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+
 import { CategoryService } from 'service/category-service';
 
 export class CategoryController {

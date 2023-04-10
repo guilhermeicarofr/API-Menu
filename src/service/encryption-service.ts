@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import bcypt from 'bcrypt';
-import { IAdmin } from 'model/IAdmin';
 
+import { IAdmin } from 'model/IAdmin';
 
 export class EncryptionService {
   private SECRET;
 
   constructor() {
-    this.SECRET = 'top_secret';
+    this.SECRET = process.env.SECRET || 'top_secret';
   }
 
   generateHash(password: string) {

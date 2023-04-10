@@ -1,0 +1,40 @@
+services:
+  db:
+    image: mongo
+    container_name: db
+    restart: always
+    volumes:
+      - data:/data/db
+    ports:
+      - 27017:27017
+
+  cache:
+    image: redis
+    container_name: cache
+    ports:
+      - 6379:6379
+    command:
+      - sh
+      - -c
+      - |
+        redis-server
+
+  api:
+    build: .
+    container_name: api
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 4000:4000
+    depends_on:
+      - cache
+      - db
+    command:
+      - sh
+      - -c
+      - |
+        npm run start
+
+volumes:
+  data:

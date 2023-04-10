@@ -47,9 +47,9 @@ export class ProductService {
       await this.categoryService.checkCategories(productPatch.categories);
       newData.categories = productPatch.categories;
     }
-    if(productPatch.name) newData.name = productPatch.name;
-    if(productPatch.price) newData.price = productPatch.price;
-    if(productPatch.qty) newData.qty = productPatch.qty;
+    if(productPatch?.name) newData.name = productPatch.name;
+    if(productPatch?.price) newData.price = productPatch.price;
+    if(productPatch?.qty) newData.qty = productPatch.qty;
 
     await this.repository.patch(id, newData);
 

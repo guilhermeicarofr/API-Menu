@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+
 import { IAdmin } from 'model/IAdmin';
 import { AuthService } from 'service/auth-service';
 
