@@ -5,10 +5,11 @@
 #
 
 ## Como rodar:
-- Antes de tudo - clonar esse repositório:
+- Primeiro passo - clonar este mesmo repositório para sua máquina:
 ````
 git clone "https://github.com/guilhermeicarofr/API-Menu"
 ````
+- Daqui existem duas opções para executar o projeto
 
 ### Opção1 - Rodar em um container Docker (recomendado):
 - Com docker e docker-compose instalado na máquina (veja: https://docs.docker.com/compose/install/), acessar a pasta do projeto e executar o comando a seguir. Pode ser necessário autorização de superusuário.
@@ -18,15 +19,34 @@ sudo docker-compose up
 - A aplicação estará disponível no endpoint http://localhost:4000/
 
 ### Opção2 - Rodar localmente (sem Docker):
-- Necessário instalação do Node e NPM na máquina (v19+ recomendado).
-- Acessar a pasta do projeto e executar o comando a seguir para instalar os pacotes:
+- Necessário instalação do Node e NPM na máquina (v19+ recomendado)(veja: https://heynode.com/tutorial/install-nodejs-locally-nvm/)
+- Necessária instalação do MongoDB (veja: https://www.mongodb.com/docs/manual/installation/)
+- Necessária instalação do Redis (veja: https://redis.io/docs/getting-started/installation/)
+
+#### Primeiro executamos o MongoDB:
+- Em um terminal, executar o comando e deixar o terminal aberto:
+```
+mongod --dbpath ~/.mongo
+```
+- Em outro terminal, executar o comando e deixar o terminal aberto:
+```
+mongo
+```
+#### Agora precisamos inicializar o Redis:
+- Em um novo terminal, executamos o comando:
+```
+redis-server
+```
+#### Agora podemos executar a aplicação Node:
+- Acessar a pasta do projeto e executar o comando a seguir para instalar os pacotes e aguardar:
 ```
 npm install
 ```
-- Executar aplicação:
+- Após o fim das instalações executar aplicação com o comando:
 ```
 npm run start
 ```
+- Dessa forma os bancos MongoDB e Redis estarão sendo executados nas suas respectivas portas padrão
 - A aplicação estará disponível no endpoint http://localhost:5000/
 
 #
@@ -176,28 +196,38 @@ Product = {
 ## Arquitetura em camadas da aplicação:
 - Camada Routes(Presentation): contém a apresentação e organização das rotas da aplicação
 - Camada Controller(Application): contém as ações e os inputs e outputs da aplicação
-- Camada Service(Domain): contém as regras de negócio e contexto de como opera a aplicação
+- Camada Service(Domain): contém as regras de negócio e contexto de como opera a aplicação e validação de informações
 - Camada Repository(Persistence) contém os acessos e manipulação dos dados salvos e persistidos na aplicação, seja banco de dados ou cache
+
+- Outros diretórios:
+  - Database: contém as classes que dão acesso e conexão direta aos bancos de dados MongoDB e Redis
+  - Middleware: contém os middlewares de validação de dados de input e de autenticação por headers das requisições
+  - Model: contém os modelos de dados utilizados na aplicação
+  - Schemas: contém os schemas de validação de dados de input utilizados pela biblioteca Joi
+  - Errors: contém os erros pré-definidos que a aplicação pode retornar
 
 #
 
 ## Como executar testes automatizados:
 ### Opção1 - Rodar testes em um container Docker (recomendado):
+- Necessário ter Docker e docker-compose instalado na máquina, veja tópico 'Como rodar - Opção1'
 - Acessar a pasta do projeto e executar o comando:
 ```
 sudo docker-compose -f docker-compose-test.yml up
 ```
-- Os testes automatizados serão executados com Jest e um relatório de cobertura do código será emitido
+- Os testes automatizados serão executados com Jest e um relatório de cobertura do código será emitido na pasta /coverage/
 
 ### Opção2 - Rodar testes localmente (sem Docker):
-- Executar comando de testes:
+- Necessário realizar todas as etapas do tópico 'Como rodar - Opção2'
+- Ao invés de executar a aplicação, executar o comando de testes:
 ```
 npm run test
 ```
-- Executar testes com relatório de cobertura:
+- Ou executar testes com relatório de cobertura:
 ```
 npm run test:coverage
 ```
+- Os testes automatizados serão executados com Jest e um relatório de cobertura do código será emitido na pasta /coverage/
 
-## Exemplo de relatório de cobertura do código disponível na pasta /coverage/:
+## Exemplo de relatório de cobertura do código:
 <img align="center" height="300em" width="550em" style="border-radius:50em" alt='coverage' src='https://github.com/guilhermeicarofr/API-Menu/blob/main/e401990c-a389-4d46-bcfb-da3e324da8d0.jpg' />
