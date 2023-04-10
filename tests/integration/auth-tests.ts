@@ -25,7 +25,7 @@ describe('INTEGRATION: POST /auth/signup', () => {
     expect(response.status).toBe(httpStatus.BAD_REQUEST);
   });
 
-  it('should respond with status 204 if username is already in use', async () => {
+  it('should respond with status 409 if username is already in use', async () => {
     await utils.createAdmin({ username: 'name', password: '123456' });
 
     const body = { username: 'name', password: '123456' };
