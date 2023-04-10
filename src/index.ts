@@ -17,8 +17,10 @@ app.use(authRouter);
 app.use(categoryRouter);
 app.use(productRouter);
 
-app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}...`);
-});
+if(process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Listening at port ${PORT}...`);
+  });
+}
 
 export { app };

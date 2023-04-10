@@ -44,7 +44,8 @@ export class ProductService {
 
     let newData = { name, price, qty, categories };
     if(productPatch?.categories) {
-      await this.categoryService.checkCategories(productPatch.categories);
+      const checkCategories = await this.categoryService.checkCategories(productPatch.categories);
+      if(!checkCategories) throw this.errors.categoryConflict();
       newData.categories = productPatch.categories;
     }
     if(productPatch?.name) newData.name = productPatch.name;
