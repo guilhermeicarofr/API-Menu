@@ -153,26 +153,35 @@ Product = {
 
 #
 
-## Tecnologias utilizadas:
-- Node:
-- Typescript:
-- Express:
-- MongoDB:
-- Mongoose:
-- Redis:
-- BCrypt:
-- JWT:
-- Joi:
-- HTTP-Status:
-- Jest:
-- Supertest:
+## Paradigma orientado a objeto (POO):
+- A aplicação foi desenvolvida com o conceito de Programação Orientada a Objetos utilizando classes para maior qualidade do código em termos de organização, manutenção, legibilidade, modularidade e independência das partes, com alta possibilidade de re-utilização de módulos e adaptação do projeto se necessario.
 
-## Arquitetura em camadas:
-- Camada Routes:
+## Tecnologias utilizadas:
+- [ Node ]: ambiente de execução javascript como possibilidade de disponibilizar uma api versátil, eficiente e de fácil implementação, foi usada a v19.
+- [ Typescript ]: utilizado para permitir a tipagem do código trazendo maior segurança, organização e limpeza do código da aplicação, auxiliando no desenvolvimento e evitando bugs.
+- [ Express ]: usado para facilitar a implementação de uma aplicação de servidor HTTP com Node.
+- [ MongoDB ]: banco de dados não relacional extremamente versátil e amplamente usado no mercado, o mongodb permite o armazenamento e manipulação eficiente e ágil de dados no formato de objetos.
+- [ Mongoose ]: biblioteca usada para comunicação com o MongoDB que permite a tipagem e modelagem dos dados da aplicação através de schemas e models.
+- [ Redis ]: banco não relacional executado em memória, usado para criação da camada de cache para produtos e categorias, permitindo uma alta velocidade de recuperação nas listas desses dados, não sendo necessário buscá-los diretamente no banco Mongo em toda requisição.
+- [ Jest ]: biblioteca de testes automatizados, usada para permitir alta qualidade e confiabilidade no código da aplicação atráves dos testes desenvolvidos e dos relatorios de cobertura de código.
+- [ Supertest ]: ferramente auxiliar para o jest, que facilita a execução do servidor node+express para recebimento de requisições http de teste.
+- [ Docker ]: poderosa ferramenta de execução de containers, permite que a aplicação seja executada em um ambiente a parte da máquina local e sem que seja necessário fazer a instalação de todas as dependências do projeto na máquina.
+- [ Docker-Compose ]: ferramenta auxiliar que permitiu executar não só a aplicação Node em um container mas também containers separados para o banco de dados MongoDB e para o banco de cache Redis, interligando os três containers.
+- [ Git ]: ferramente de versionamento de código amplamente usada para controle de versões e edição, assim como histórico de desenvolvimento da aplicação.
+- [ BCrypt ]: biblioteca de criptografia que foi usada para criptografar a senha do Admin antes de armazená-la no banco de dados no momento do signup por motivos de segurança dos dados, o bcrypt também é usado para posteriormente verificar se a senha informada no login é compatível com a senha criptografada armazenada no signup.
+- [ JWT ]: a jsonwebtoken foi utilizada para gerar tokens de autenticação baseados nos dados do usuário que fez login com sucesso na aplicação, tokens que podem ser usados nas outras requisições para validar a autorização do cliente.
+- [ Joi ]: usada para validação de dados, foi importante para ajudar na verificação de dados de input para garantir os parâmetros definidos através de schemas e impedir inputs inválidos para a api.
+- [ HTTP-Status ]: biblioteca usada para melhor a padronização dos outputs da aplicação atráves de HTTP status codes, de forma semântica e visualmente fácil de identificar no código.
+
+## Arquitetura em camadas da aplicação:
+- Camada Routes(Presentation): contém a apresentação e organização das rotas da aplicação
+- Camada Controller(Application): contém as ações e os inputs e outputs da aplicação
+- Camada Service(Domain): contém as regras de negócio e contexto de como opera a aplicação
+- Camada Repository(Persistence) contém os acessos e manipulação dos dados salvos e persistidos na aplicação, seja banco de dados ou cache
 
 #
 
-## Executar testes automatizados:
+## Como executar testes automatizados:
 ### Opção1 - Rodar testes em um container Docker (recomendado):
 - Acessar a pasta do projeto e executar o comando:
 ```
@@ -181,7 +190,6 @@ sudo docker-compose -f docker-compose-test.yml up
 - Os testes automatizados serão executados com Jest e um relatório de cobertura do código será emitido
 
 ### Opção2 - Rodar testes localmente (sem Docker):
-
 - Executar comando de testes:
 ```
 npm run test
@@ -190,3 +198,6 @@ npm run test
 ```
 npm run test:coverage
 ```
+
+## Exemplo de relatório de cobertura do código disponível na pasta /coverage/:
+<img align="right" height="200em" width="200em" style="border-radius:50em" alt='coverage' src='' />
