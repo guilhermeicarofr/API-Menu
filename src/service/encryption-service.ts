@@ -7,7 +7,7 @@ export class EncryptionService {
   private SECRET;
 
   constructor() {
-    this.SECRET = 'top_secret';
+    this.SECRET = process.env.SECRET || 'top_secret';
   }
 
   generateHash(password: string) {
