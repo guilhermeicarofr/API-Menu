@@ -8,21 +8,33 @@ services:
     ports:
       - 27017:27017
 
+  cache:
+    image: redis
+    container_name: cache
+    ports:
+      - 6379:6379
+    command:
+      - sh
+      - -c
+      - |
+        redis-server
+
   api:
     build: .
     container_name: api
-    ports:
-      - 4000:4000
     volumes:
       - .:/app
       - /app/node_modules
+    ports:
+      - 4000:4000
     depends_on:
+      - cache
       - db
     command:
-    - sh
-    - -c
-    - |
-      npm run start
+      - sh
+      - -c
+      - |
+        npm run start
 
 volumes:
   data:
