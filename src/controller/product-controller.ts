@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+
 import { IProduct } from 'model/IProduct';
 import { ProductService } from 'service/product-service';
 

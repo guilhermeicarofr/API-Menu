@@ -1,7 +1,8 @@
+import mongoose from 'mongoose';
+
 import { IAdmin } from 'model/IAdmin';
 import { ICategory } from 'model/ICategory';
 import { IProduct } from 'model/IProduct';
-import mongoose from 'mongoose';
 
 export class Database {
   private DATABASE_URL: string = process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/menu';

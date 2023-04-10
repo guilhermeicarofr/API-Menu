@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+
 import { TestService } from 'service/test-service';
 
 export class TestController {

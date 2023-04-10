@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcypt from 'bcrypt';
-import { IAdmin } from 'model/IAdmin';
 
+import { IAdmin } from 'model/IAdmin';
 
 export class EncryptionService {
   private SECRET;

@@ -25,7 +25,7 @@ export class CategoryService {
 
       const subCategories = categories[createdCategory.name];
       for(const sub of subCategories) {
-        await this.repository.create({ name: sub.name, parent: createdCategory })
+        await this.repository.create({ name: sub.name, parent: createdCategory });
       }
     }
   }

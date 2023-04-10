@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+
 import { testRouter } from 'routes/test-router';
 import { authRouter } from 'routes/auth-router';
 import { categoryRouter } from 'routes/category-router';
@@ -17,7 +18,7 @@ app.use(categoryRouter);
 app.use(productRouter);
 
 app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}...`)
+  console.log(`Listening at port ${PORT}...`);
 });
 
 export { app };
