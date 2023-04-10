@@ -1,6 +1,8 @@
 import { Cache } from 'database/cache';
 import { Database } from 'database/database';
 import { IAdmin } from 'model/IAdmin';
+import { Category, ICategory } from 'model/ICategory';
+import { IProduct, Product } from 'model/IProduct';
 
 export class Utils {
   private db;
@@ -21,7 +23,15 @@ export class Utils {
     await this.db.Product.deleteMany();
   }
 
-  async createAdmin(data: IAdmin) {
+  async createAdmin(data: IAdmin): Promise<IAdmin> {
     return await this.db.Admin.create(data);
+  }
+
+  async createCategory(data: ICategory): Promise<Category> {
+    return (await this.db.Category.create(data)).populate('parent');
+  }
+
+  async createProduct(data: IProduct): Promise<Product> {
+    return (await this.db.Product.create(data)).populate({ path: 'categories', populate: { path: 'parent' } });
   }
 }
