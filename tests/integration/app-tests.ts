@@ -5,7 +5,7 @@ import { app } from 'index';
 
 const testApp = supertest(app);
 
-describe('GET /test', () => {
+describe('INTEGRATION: GET /test', () => {
   it('should respond with status 200 and OK is server is up', async () => {
     const response = await testApp.get('/test');
 
