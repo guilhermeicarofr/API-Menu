@@ -1,5 +1,5 @@
 # API-Menu
-- Autor: Guilherme Icaro F Real [@GItHub](https://www.github.com/guilhermeicarofr) [@LinkedIn](https://www.linkedin.com/in/guilhermeicarofr/)
+- Autor: Guilherme Icaro F Real [@GitHub](https://www.github.com/guilhermeicarofr) [@LinkedIn](https://www.linkedin.com/in/guilhermeicarofr/)
 - Tecnologias utilizadas: Node.js, Express.js, POO, Typescript, Javascript, MongoDB, Mongoose, Redis, Docker, Jest, Supertest, BCrypt, JWT, Joi
 
 #
