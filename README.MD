@@ -200,4 +200,4 @@ npm run test:coverage
 ```
 
 ## Exemplo de relatório de cobertura do código disponível na pasta /coverage/:
-<img align="right" height="200em" width="200em" style="border-radius:50em" alt='coverage' src='' />
+<img align="center" height="300em" width="550em" style="border-radius:50em" alt='coverage' src='https://github.com/guilhermeicarofr/API-Menu/blob/main/e401990c-a389-4d46-bcfb-da3e324da8d0.jpg' />
