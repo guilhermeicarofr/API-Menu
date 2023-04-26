@@ -1,6 +1,6 @@
 FROM node:19
 
-WORKDIR /api
+WORKDIR /app
 
 COPY . .
 
